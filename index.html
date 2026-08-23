@@ -3,9 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dineshnath P. Yogi — Full-Stack Developer</title>
+<title>Dineshnath P. Yogi | Full-Stack Developer | Java & Spring Boot</title>
+<meta name="description" content="Portfolio of Dineshnath P. Yogi, a Full-Stack Developer with 4+ years of experience building enterprise applications, SaaS platforms, REST APIs, and real-time systems."/>
+<meta name="author" content="Dineshnath P. Yogi"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://dineshyogi1232.github.io/"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Dineshnath P. Yogi | Full-Stack Developer | Java & Spring Boot"/>
+<meta property="og:description" content="Portfolio of Dineshnath P. Yogi, a Full-Stack Developer with 4+ years of experience building enterprise applications, SaaS platforms, REST APIs, and real-time systems."/>
+<meta property="og:url" content="https://dineshyogi1232.github.io/"/>
+<meta property="og:site_name" content="Dineshnath P. Yogi — Portfolio"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dineshnath P. Yogi | Full-Stack Developer | Java & Spring Boot"/>
+<meta name="twitter:description" content="Portfolio of Dineshnath P. Yogi, a Full-Stack Developer with 4+ years of experience building enterprise applications, SaaS platforms, REST APIs, and real-time systems."/>
+<meta name="theme-color" content="#0a0d14"/>
+
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
 <style>
   :root {
     --bg: #0a0d14;
@@ -16,8 +34,36 @@
     --accent2: #38e8c0;
     --accent3: #f7c948;
     --text: #e8edf8;
+    --text-soft: #8fa3c8;
     --muted: #7385a8;
     --dim: #3a4a6b;
+    --shadow: rgba(0,0,0,.4);
+    --shadow-lg: rgba(0,0,0,.5);
+    --overlay-backdrop: rgba(5,7,14,.72);
+    --hero-overlay:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(79,142,247,.12) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(56,232,192,.08) 0%, transparent 55%);
+    --nav-h: 76px;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f7f9fc;
+    --surface: #eef2f9;
+    --card: #ffffff;
+    --border: #e2e7f1;
+    --accent: #2f6fe0;
+    --accent2: #0f9d78;
+    --accent3: #c98a0e;
+    --text: #131a2b;
+    --text-soft: #47536e;
+    --muted: #55618a;
+    --dim: #7d89a8;
+    --shadow: rgba(30,42,74,.10);
+    --shadow-lg: rgba(30,42,74,.16);
+    --overlay-backdrop: rgba(20,26,42,.35);
+    --hero-overlay:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(47,111,224,.07) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(15,157,120,.05) 0%, transparent 55%);
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,16 +77,43 @@
     font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
+    transition: background .3s ease, color .3s ease;
   }
 
-  /* ── GRID NOISE OVERLAY ── */
+  body.modal-open { overflow: hidden; }
+
+  a { color: inherit; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  /* ── ACCESSIBILITY ── */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--accent);
+    color: #fff;
+    padding: .8rem 1.4rem;
+    z-index: 1000;
+    border-radius: 0 0 8px 0;
+    font-size: .85rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .skip-link:focus { left: 0; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* ── GRID OVERLAY ── */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image:
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(79,142,247,.12) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(56,232,192,.08) 0%, transparent 55%);
+    background-image: var(--hero-overlay);
     pointer-events: none;
     z-index: 0;
   }
@@ -50,13 +123,27 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
+    background: rgba(10,13,20,.75);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid transparent;
+    transition: background .3s, border-color .3s, box-shadow .3s;
+  }
+  :root[data-theme="light"] nav { background: rgba(247,249,252,.8); }
+
+  nav.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .nav-inner {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 1.2rem 5%;
-    background: rgba(10,13,20,.75);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--border);
+    gap: 1.5rem;
   }
 
   .nav-logo {
@@ -64,15 +151,15 @@
     font-size: 1.3rem;
     color: var(--accent);
     letter-spacing: .02em;
+    text-decoration: none;
+    flex-shrink: 0;
   }
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2.4rem;
-  }
+  .nav-menu { display: flex; align-items: center; gap: 2rem; }
 
-  nav a {
+  .nav-links { list-style: none; display: flex; gap: 2rem; }
+
+  .nav-links a {
     color: var(--muted);
     text-decoration: none;
     font-size: .85rem;
@@ -81,21 +168,60 @@
     text-transform: uppercase;
     transition: color .25s;
   }
-  nav a:hover { color: var(--accent); }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+
+  .btn-nav-resume {
+    font-size: .75rem;
+    padding: .5rem 1rem;
+    white-space: nowrap;
+  }
+
+  .nav-right { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
+
+  .theme-toggle, .nav-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+  }
+  .theme-toggle:hover, .nav-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  .theme-toggle .icon-moon { display: block; }
+  .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+
+  .nav-toggle { display: none; flex-direction: column; gap: 4px; }
+  .nav-toggle-bar {
+    width: 18px; height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform .25s, opacity .25s;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
   /* ── HERO ── */
-  #about {
+  #home {
     position: relative;
     min-height: 100vh;
     display: grid;
     place-items: center;
-    padding: 7rem 5% 4rem;
+    padding: calc(var(--nav-h) + 2.5rem) 5% 4rem;
     overflow: hidden;
   }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.05fr .95fr;
     gap: 4rem;
     align-items: center;
     max-width: 1200px;
@@ -103,62 +229,66 @@
     z-index: 1;
   }
 
-  .hero-tag {
+  .status-pill {
     display: inline-flex;
     align-items: center;
     gap: .5rem;
     font-family: 'DM Mono', monospace;
-    font-size: .75rem;
+    font-size: .72rem;
     color: var(--accent2);
     border: 1px solid rgba(56,232,192,.3);
     padding: .35rem .8rem;
     border-radius: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
     letter-spacing: .05em;
+    text-transform: uppercase;
   }
-  .hero-tag::before {
-    content: '';
+  .status-dot {
     width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--accent2);
-    animation: blink 1.5s ease-in-out infinite;
+    flex-shrink: 0;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .status-dot { animation: blink 1.6s ease-in-out infinite; }
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
 
-  @keyframes blink {
-    0%,100% { opacity: 1; }
-    50% { opacity: .2; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: .8rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .9rem;
   }
 
   .hero-name {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    line-height: 1.08;
+    font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+    line-height: 1.1;
     letter-spacing: -.01em;
+    margin-bottom: .9rem;
+  }
+  .hero-name em { font-style: italic; color: var(--accent); }
+
+  .hero-headline {
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+    font-weight: 500;
+    color: var(--text);
+    max-width: 540px;
     margin-bottom: 1rem;
+    line-height: 1.4;
   }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-role {
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-
-  .hero-role strong { color: var(--accent3); font-weight: 600; }
 
   .hero-desc {
-    color: #8fa3c8;
+    color: var(--text-soft);
     font-size: .97rem;
-    max-width: 480px;
-    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-bottom: 2rem;
   }
 
-  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
 
   .btn {
     display: inline-flex;
@@ -172,78 +302,141 @@
     transition: all .25s;
     cursor: pointer;
     border: none;
+    font-family: inherit;
   }
 
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-  }
+  .btn-primary { background: var(--accent); color: #fff; }
   .btn-primary:hover { background: #6ba5ff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,142,247,.35); }
 
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-  /* Hero Visual */
-  .hero-visual {
-    position: relative;
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px dashed var(--border); }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  .btn-sm { padding: .55rem 1.1rem; font-size: .78rem; }
+
+  .hero-credentials {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-bottom: 1.8rem;
+  }
+  .credential {
+    font-family: 'DM Mono', monospace;
+    font-size: .74rem;
+    color: var(--muted);
+    padding: .45rem .85rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    letter-spacing: .02em;
   }
 
-  .code-card {
+  .hero-social { display: flex; gap: .8rem; }
+  .hero-social a {
+    width: 2.4rem; height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    transition: border-color .2s, color .2s, transform .2s;
+  }
+  .hero-social a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* Hero Visual — Architecture Card */
+  .hero-visual { position: relative; display: flex; justify-content: center; }
+
+  .arch-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.8rem;
+    border-radius: 16px;
+    padding: 2rem 1.6rem 1.7rem;
+    box-shadow: 0 24px 60px var(--shadow-lg);
+    min-width: 280px;
+    width: 100%;
+    max-width: 340px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .arch-card { animation: float 6s ease-in-out infinite; }
+  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+  .arch-diagram { display: flex; flex-direction: column; align-items: center; }
+
+  .arch-node {
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+    padding: .65rem 1rem;
+    border-radius: 9px;
+    background: var(--surface);
+    border: 1px solid var(--border);
     font-family: 'DM Mono', monospace;
     font-size: .78rem;
-    line-height: 1.9;
-    box-shadow: 0 24px 60px rgba(0,0,0,.5);
-    min-width: 320px;
-    animation: float 5s ease-in-out infinite;
+    font-weight: 500;
+    color: var(--text);
+    box-shadow: 0 6px 16px var(--shadow);
   }
+  .arch-diagram .arch-node:nth-child(1) { color: var(--accent2); border-color: rgba(56,232,192,.35); }
+  .arch-diagram .arch-node:nth-child(3) { color: var(--accent); border-color: rgba(79,142,247,.35); }
+  .arch-diagram .arch-node:nth-child(5) { color: var(--text); }
+  .arch-diagram .arch-node:nth-child(7) { color: var(--accent); border-color: rgba(79,142,247,.25); }
+  .arch-diagram .arch-node:nth-child(9) { color: var(--accent3); border-color: rgba(247,201,72,.35); }
+  .arch-diagram .arch-node:nth-child(11) { color: var(--accent2); border-color: rgba(56,232,192,.35); }
 
-  @keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+  .arch-connector { width: 2px; height: 24px; margin: 0 auto; position: relative; background: linear-gradient(to bottom, var(--accent), var(--accent2)); opacity: .35; }
+  .arch-connector::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0;
+    width: 6px; height: 6px;
+    margin-left: -3px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 8px var(--accent2);
+    opacity: 0;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .arch-connector::after { animation: archPulse 2.5s ease-in-out infinite; }
+    .arch-connector:nth-child(2)::after { animation-delay: 0s; }
+    .arch-connector:nth-child(4)::after { animation-delay: .3s; }
+    .arch-connector:nth-child(6)::after { animation-delay: .6s; }
+    .arch-connector:nth-child(8)::after { animation-delay: .9s; }
+    .arch-connector:nth-child(10)::after { animation-delay: 1.2s; }
+  }
+  @keyframes archPulse { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
 
-  .code-card .dot-row { display: flex; gap: .4rem; margin-bottom: 1.2rem; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .d1 { background: #ff5f57; }
-  .d2 { background: #febc2e; }
-  .d3 { background: #28c840; }
-
-  .c-kw { color: #f07178; }
-  .c-fn { color: #82aaff; }
-  .c-str { color: var(--accent2); }
-  .c-num { color: var(--accent3); }
-  .c-cm { color: var(--dim); }
-  .c-pl { color: #c792ea; }
+  .arch-badges { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px dashed var(--border); }
+  .arch-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    padding: .35rem .7rem;
+    border-radius: 6px;
+    background: rgba(199,146,234,.1);
+    color: #c792ea;
+    border: 1px solid rgba(199,146,234,.25);
+  }
 
   .badge-float {
     position: absolute;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: .6rem 1rem;
-    font-size: .78rem;
+    padding: .55rem .95rem;
+    font-size: .76rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: .5rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    box-shadow: 0 8px 24px var(--shadow);
+    color: var(--accent2);
+    bottom: -1rem;
+    left: -1rem;
   }
 
-  .badge-float.b1 { top: -1.5rem; right: -1.5rem; color: var(--accent3); border-color: rgba(247,201,72,.3); }
-  .badge-float.b2 { bottom: -1rem; left: -1.5rem; color: var(--accent2); border-color: rgba(56,232,192,.3); }
-
   /* ── SECTIONS ── */
-  section { padding: 6rem 5%; position: relative; z-index: 1; }
+  section { padding: 6rem 5%; position: relative; z-index: 1; scroll-margin-top: var(--nav-h); }
   .section-inner { max-width: 1200px; margin: 0 auto; }
 
   .section-label {
@@ -262,45 +455,68 @@
     margin-bottom: 3.5rem;
   }
 
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 3.5rem; align-items: center; }
+
+  .about-text p { color: var(--text-soft); font-size: .98rem; margin-bottom: 1.2rem; max-width: 560px; }
+
+  .about-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; margin-top: 1.6rem; max-width: 560px; }
+  .about-highlight {
+    display: flex; align-items: center; gap: .6rem;
+    font-size: .84rem; color: var(--text);
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: .8rem .9rem;
+  }
+  .about-highlight::before { content: '✓'; color: var(--accent2); font-weight: 700; flex-shrink: 0; }
+
+  .sdlc-flow {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.4rem;
+  }
+  .sdlc-step {
+    font-family: 'DM Mono', monospace; font-size: .72rem;
+    color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: .5rem .7rem; letter-spacing: .02em;
+  }
+  .sdlc-arrow { color: var(--dim); font-size: .8rem; }
+
+  /* ── APPROACH / PROCESS ── */
+  .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.6rem; position: relative; }
+  .process-grid::before {
+    content: '';
+    position: absolute; top: 1.1rem; left: 8%; right: 8%;
+    height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: .3; z-index: 0;
+  }
+  .process-step { position: relative; z-index: 1; }
+  .process-num {
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: .8rem; margin-bottom: 1rem;
+  }
+  .process-step h3 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; margin-bottom: .5rem; }
+  .process-step p { font-size: .85rem; color: var(--text-soft); }
+
   /* ── SKILLS ── */
   #skills { background: var(--surface); }
 
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
 
-  .skill-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.6rem;
-    transition: border-color .25s, transform .25s;
-  }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.6rem; transition: border-color .25s, transform .25s; }
   .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
 
-  .skill-icon {
-    font-size: 1.8rem;
-    margin-bottom: .8rem;
-  }
+  .skill-icon { font-size: 1.8rem; margin-bottom: .8rem; }
+  .skill-title { font-weight: 700; font-size: .95rem; margin-bottom: .8rem; color: var(--text); }
 
-  .skill-title {
-    font-weight: 700;
-    font-size: .95rem;
-    margin-bottom: .8rem;
-    color: var(--text);
-  }
-
-  .tag-list { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tag-list, .modal-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
   .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    padding: .25rem .6rem;
-    border-radius: 4px;
-    background: rgba(79,142,247,.1);
-    color: var(--accent);
+    font-family: 'DM Mono', monospace; font-size: .7rem;
+    padding: .25rem .6rem; border-radius: 4px;
+    background: rgba(79,142,247,.1); color: var(--accent);
     border: 1px solid rgba(79,142,247,.2);
   }
   .tag.g { background: rgba(56,232,192,.1); color: var(--accent2); border-color: rgba(56,232,192,.2); }
@@ -309,85 +525,43 @@
 
   /* ── EXPERIENCE ── */
   .timeline { position: relative; padding-left: 2rem; }
-
   .timeline::before {
     content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 2px;
+    position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
     background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
     border-radius: 2px;
   }
 
-  .tl-item {
-    position: relative;
-    padding: 0 0 3rem 2rem;
-  }
-
+  .tl-item { position: relative; padding: 0 0 3rem 2rem; }
   .tl-item::before {
     content: '';
-    position: absolute;
-    left: -2rem;
-    top: .5rem;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--bg);
+    position: absolute; left: -2rem; top: .5rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg);
     transform: translateX(calc(-50% + 1px));
   }
-
   .tl-item:first-child::before { background: var(--accent2); box-shadow: 0 0 12px var(--accent2); }
 
-  .tl-period {
-    font-family: 'DM Mono', monospace;
-    font-size: .72rem;
-    color: var(--accent);
-    letter-spacing: .08em;
-    margin-bottom: .4rem;
-  }
-
-  .tl-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: .2rem;
-  }
-
-  .tl-company {
-    font-size: .9rem;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
+  .tl-period { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); letter-spacing: .08em; margin-bottom: .4rem; }
+  .tl-title { font-size: 1.15rem; font-weight: 700; margin-bottom: .2rem; }
+  .tl-company { font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
 
   .tl-bullets { list-style: none; }
-  .tl-bullets li {
-    position: relative;
-    padding-left: 1.2rem;
-    font-size: .9rem;
-    color: #8fa3c8;
-    margin-bottom: .5rem;
+  .tl-bullets li { position: relative; padding-left: 1.2rem; font-size: .9rem; color: var(--text-soft); margin-bottom: .5rem; }
+  .tl-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent2); font-weight: 700; }
+
+  .tl-more-toggle {
+    margin-top: .6rem;
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Mono', monospace; font-size: .76rem;
+    color: var(--accent); padding: .3rem 0;
   }
-  .tl-bullets li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--accent2);
-    font-weight: 700;
-  }
+  .tl-more-toggle:hover { color: var(--accent2); }
 
   /* ── PROJECTS ── */
   #projects { background: var(--surface); }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  @media (max-width: 900px) {
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+  .projects-feature { margin-bottom: 1.5rem; }
 
   .project-card {
     background: var(--card);
@@ -396,76 +570,54 @@
     padding: 1.8rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .9rem;
     transition: all .3s;
     position: relative;
     overflow: hidden;
   }
-
   .project-card::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .3s;
+    transform: scaleX(0); transform-origin: left; transition: transform .3s;
   }
   .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { border-color: rgba(79,142,247,.3); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+  .project-card:hover { border-color: rgba(79,142,247,.3); transform: translateY(-5px); box-shadow: 0 20px 50px var(--shadow); }
 
-  .project-num {
-    font-family: 'DM Mono', monospace;
-    font-size: .68rem;
-    color: var(--dim);
-    letter-spacing: .1em;
+  .project-card-feature {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.2rem;
+    padding: 2.5rem;
+    border-color: rgba(79,142,247,.3);
   }
 
-  .project-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1.3;
-  }
+  .project-card-top { display: flex; align-items: center; gap: .8rem; margin-bottom: -.3rem; }
+  .project-num { font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--dim); letter-spacing: .1em; }
+  .project-category { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--accent2); letter-spacing: .06em; text-transform: uppercase; }
 
-  .project-link {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem;
-    color: var(--accent2);
-    text-decoration: none;
-  }
+  .project-title { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+  .project-card-feature .project-title { font-size: 1.5rem; font-family: 'DM Serif Display', serif; font-weight: 400; }
+
+  .project-link { font-family: 'DM Mono', monospace; font-size: .74rem; color: var(--accent2); text-decoration: none; }
   .project-link:hover { text-decoration: underline; }
 
-  .project-desc { font-size: .88rem; color: #8fa3c8; flex: 1; }
+  .project-desc { font-size: .88rem; color: var(--text-soft); }
+  .project-desc strong { color: var(--text); }
+
+  .project-highlights { list-style: none; }
+  .project-highlights li { position: relative; padding-left: 1.2rem; font-size: .86rem; color: var(--text-soft); margin-bottom: .5rem; }
+  .project-highlights li::before { content: '›'; position: absolute; left: 0; color: var(--accent2); font-weight: 700; }
 
   .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
 
-  /* ── EDUCATION ── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
+  .project-actions { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; margin-top: .4rem; }
 
-  .edu-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.8rem;
-    transition: border-color .25s;
-  }
-  .edu-card:hover { border-color: var(--accent); }
+  .no-live-note { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--dim); }
 
-  .edu-degree {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    margin-bottom: .4rem;
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
-  .edu-school { font-size: .9rem; color: var(--muted); margin-bottom: .5rem; }
-  .edu-year { font-family: 'DM Mono', monospace; font-size: .75rem; color: var(--accent); }
-
-  /* ── AWARDS ── */
+  /* ── RECOGNITION ── */
   .award-banner {
     background: linear-gradient(135deg, rgba(247,201,72,.08), rgba(79,142,247,.06));
     border: 1px solid rgba(247,201,72,.25);
@@ -475,20 +627,22 @@
     align-items: center;
     gap: 1.5rem;
   }
-
   .award-icon { font-size: 3rem; flex-shrink: 0; }
-  .award-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--accent3); margin-bottom: .4rem; }
-  .award-text p { font-size: .9rem; color: var(--muted); }
+  .award-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--accent3); margin-bottom: .3rem; }
+  .award-text p { font-size: .9rem; color: var(--muted); margin-bottom: .2rem; }
+
+  /* ── EDUCATION ── */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: border-color .25s; }
+  .edu-card:hover { border-color: var(--accent); }
+  .edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.25rem; margin-bottom: .4rem; }
+  .edu-school { font-size: .9rem; color: var(--muted); margin-bottom: .5rem; }
+  .edu-year { font-family: 'DM Mono', monospace; font-size: .75rem; color: var(--accent); }
 
   /* ── CONTACT ── */
   #contact { background: var(--surface); }
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 
   .contact-intro h2 {
     font-family: 'DM Serif Display', serif;
@@ -496,241 +650,302 @@
     margin-bottom: 1rem;
     line-height: 1.15;
   }
-
-  .contact-intro p { color: var(--muted); font-size: .97rem; margin-bottom: 2rem; }
+  .contact-intro p { color: var(--muted); font-size: .97rem; margin-bottom: 2rem; max-width: 460px; }
+  .contact-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
 
   .contact-links { display: flex; flex-direction: column; gap: .8rem; }
-
   .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.4rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--text);
-    transition: all .25s;
-    font-size: .9rem;
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.4rem; background: var(--card);
+    border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--text);
+    transition: all .25s; font-size: .9rem;
   }
   .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
-
   .contact-link-icon {
-    font-size: 1.2rem;
-    width: 2.2rem;
-    height: 2.2rem;
-    display: grid;
-    place-items: center;
-    background: rgba(79,142,247,.1);
-    border-radius: 8px;
+    font-size: 1.2rem; width: 2.2rem; height: 2.2rem;
+    display: grid; place-items: center;
+    background: rgba(79,142,247,.1); border-radius: 8px;
+    flex-shrink: 0;
   }
 
   /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    border-top: 1px solid var(--border);
-    font-size: .8rem;
-    color: var(--dim);
-    z-index: 1;
-    position: relative;
+  footer { border-top: 1px solid var(--border); z-index: 1; position: relative; padding: 3.5rem 5% 2rem; }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto 2rem;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 2rem;
   }
+  .footer-brand p { font-size: .95rem; font-weight: 600; margin: .8rem 0 .4rem; }
+  .footer-tagline { font-size: .85rem; color: var(--muted); max-width: 340px; font-weight: 400 !important; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-links a { font-size: .85rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy { max-width: 1200px; margin: 0 auto; font-size: .8rem; color: var(--muted); text-align: center; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+
+  /* ── CASE STUDY MODAL ── */
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 300;
+    background: var(--overlay-backdrop);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 6vh 1.2rem 4vh;
+    overflow-y: auto;
+  }
+  .modal-backdrop[hidden] { display: none; }
+
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 720px;
+    width: 100%;
+    padding: 2.4rem;
+    position: relative;
+    box-shadow: 0 30px 80px var(--shadow-lg);
+  }
+
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .2s, color .2s;
+  }
+  .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+  .modal-category { font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+  .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.55rem; margin-bottom: .6rem; padding-right: 2.4rem; }
+  .modal-live-link { display: inline-block; font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent2); text-decoration: none; margin-bottom: 1.4rem; }
+  .modal-live-link:hover { text-decoration: underline; }
+
+  .modal-section { padding: 1.3rem 0; border-top: 1px solid var(--border); }
+  .modal-section:first-of-type { margin-top: .4rem; }
+  .modal-step { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--dim); letter-spacing: .1em; }
+  .modal-section h3 { font-size: 1rem; font-weight: 700; margin: .3rem 0 .6rem; }
+  .modal-section p { font-size: .9rem; color: var(--text-soft); }
+  .modal-section .arch-card { margin: .5rem auto 0; box-shadow: none; animation: none; }
+
+  .modal-list { list-style: none; }
+  .modal-list li { position: relative; padding-left: 1.2rem; font-size: .88rem; color: var(--text-soft); margin-bottom: .45rem; }
+  .modal-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent2); font-weight: 700; }
 
   /* ── ANIMATIONS ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .65s ease, transform .65s ease;
-  }
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   /* ── RESPONSIVE ── */
-  @media (max-width: 800px) {
-    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+  @media (max-width: 1024px) {
+    .hero-grid { gap: 2.5rem; }
+    .project-card-feature { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    .nav-toggle { display: flex; }
+    .nav-menu {
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .35s ease, opacity .3s ease;
+    }
+    .nav-menu.open { max-height: 480px; opacity: 1; }
+    .nav-links { flex-direction: column; gap: 0; padding: .8rem 6% 0; }
+    .nav-links li { border-top: 1px solid var(--border); }
+    .nav-links li:first-child { border-top: none; }
+    .nav-links a { display: block; padding: 1rem 0; }
+    .btn-nav-resume { display: inline-flex; margin: 1rem 6% 1.4rem; }
+
+    .hero-grid, .contact-grid, .about-grid { grid-template-columns: 1fr; }
+    .about-grid { gap: 2.5rem; }
+    .hero-visual { order: -1; max-width: 320px; margin: 0 auto 1rem; }
+    .process-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+    .process-grid::before { display: none; }
+    .process-step { padding-left: 1.4rem; border-left: 2px solid var(--border); }
     .projects-grid { grid-template-columns: 1fr; }
-    .hero-visual { display: none; }
+  }
 
-    nav {
-      flex-direction: column;
-      gap: .7rem;
-      padding: .9rem 4%;
-    }
+  @media (max-width: 640px) {
+    section { padding: 4.5rem 6%; }
+    #home { padding-top: calc(var(--nav-h) + 1.5rem); min-height: auto; }
+    .section-title { margin-bottom: 2.4rem; }
+    .about-highlights { grid-template-columns: 1fr; }
+    .project-card-feature { padding: 1.6rem; }
+    .footer-inner { flex-direction: column; }
+    .modal { padding: 1.8rem; }
+  }
 
-    nav ul {
-      gap: .6rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      font-size: .72rem;
-    }
-
-    #about {
-      padding-top: 9rem;
-      min-height: auto;
-    }
+  @media (max-width: 420px) {
+    .btn { padding: .7rem 1.2rem; font-size: .85rem; }
+    .hero-credentials { gap: .45rem; }
+    .credential { font-size: .68rem; padding: .4rem .65rem; }
   }
 </style>
 </head>
 <body>
 
+<a href="#home" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">DNY</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Work</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<nav id="siteNav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">DNY</a>
+
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="Resume.pdf" download="Dineshnath_P_Yogi_Full_Stack_Developer_Resume.pdf" class="btn btn-outline btn-nav-resume">Download Resume</a>
+    </div>
+
+    <div class="nav-right">
+      <button type="button" id="themeToggle" class="theme-toggle" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      </button>
+      <button type="button" id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section id="about">
+<section id="home">
   <div class="hero-grid">
     <div class="hero-content fade-in">
-      <div class="hero-tag">Available for opportunities</div>
-      <h1 class="hero-name">Dineshnath<br/><em>P. Yogi</em></h1>
-      <p class="hero-role">Full-Stack Developer · <strong>4+ Years</strong> Experience</p>
-      <p class="hero-desc">
-        Results-driven developer delivering scalable, enterprise-grade applications across SaaS, agriculture, catering, and healthcare. Expert in Java, Spring Boot, Angular 15 & REST APIs, experienced across the full SDLC in Agile/Scrum environments. Twice nominated <em>Employee of the Month</em>.
-      </p>
+      <div class="status-pill"><span class="status-dot"></span>Open to Selected Opportunities</div>
+      <p class="hero-eyebrow">Full-Stack Developer · 4+ Years</p>
+      <h1 class="hero-name">Dineshnath <em>P. Yogi</em></h1>
+      <p class="hero-headline">Building scalable software that solves real business problems.</p>
+      <p class="hero-desc">I build production-ready enterprise applications, SaaS platforms, APIs, and real-time systems using Java, Spring Boot, Angular, and modern backend technologies.</p>
+
       <div class="btn-group">
-        <a href="mailto:dyogi4444@gmail.com" class="btn btn-primary">✉ Get in Touch</a>
-        <a href="Resume.pdf" download class="btn btn-outline">⬇ Download Resume</a>
-        <a href="https://linkedin.com/in/dinesh-yogi" target="_blank" class="btn btn-outline">↗ LinkedIn</a>
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Let's Connect</a>
+        <a href="Resume.pdf" download="Dineshnath_P_Yogi_Full_Stack_Developer_Resume.pdf" class="btn btn-ghost">⬇ Download Resume</a>
+      </div>
+
+      <div class="hero-credentials">
+        <span class="credential">4+ Years Experience</span>
+        <span class="credential">Enterprise Applications</span>
+        <span class="credential">SaaS Platforms</span>
+        <span class="credential">Real-Time Systems</span>
+        <span class="credential">Agile / Scrum</span>
+      </div>
+
+      <div class="hero-social">
+        <a href="https://linkedin.com/in/dinesh-yogi" target="_blank" rel="noopener" aria-label="Dineshnath's LinkedIn profile">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.1 1 2.48 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z"/></svg>
+        </a>
+        <a href="mailto:dyogi4444@gmail.com" aria-label="Email Dineshnath">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        </a>
       </div>
     </div>
 
-    <div class="hero-visual fade-in">
-      <div class="badge-float b1">🏆 Employee of the Month ×2</div>
-      <div class="code-card">
-        <div class="dot-row">
-          <div class="dot d1"></div>
-          <div class="dot d2"></div>
-          <div class="dot d3"></div>
+    <div class="hero-visual fade-in" aria-hidden="true">
+      <div class="arch-card">
+        <div class="arch-diagram">
+          <div class="arch-node">Angular</div>
+          <div class="arch-connector"></div>
+          <div class="arch-node">REST API</div>
+          <div class="arch-connector"></div>
+          <div class="arch-node">Spring Boot</div>
+          <div class="arch-connector"></div>
+          <div class="arch-node">Service Layer</div>
+          <div class="arch-connector"></div>
+          <div class="arch-node">JPA / Hibernate</div>
+          <div class="arch-connector"></div>
+          <div class="arch-node">MySQL</div>
         </div>
-        <div>
-          <span class="c-cm">// Developer profile</span>
+        <div class="arch-badges">
+          <span class="arch-badge">WebSocket / STOMP</span>
+          <span class="arch-badge">Channex</span>
+          <span class="arch-badge">Liquibase</span>
+          <span class="arch-badge">CI/CD</span>
         </div>
-        <div>
-          <span class="c-kw">const</span> <span class="c-fn">dev</span> = {
-        </div>
-        <div>&nbsp; name: <span class="c-str">"Dineshnath Yogi"</span>,</div>
-        <div>&nbsp; role: <span class="c-str">"Full-Stack Developer"</span>,</div>
-        <div>&nbsp; exp: <span class="c-num">4</span><span class="c-str">+ years</span>,</div>
-        <div>&nbsp; stack: [</div>
-        <div>&nbsp;&nbsp; <span class="c-str">"Spring Boot"</span>,</div>
-        <div>&nbsp;&nbsp; <span class="c-str">"Angular 15"</span>,</div>
-        <div>&nbsp;&nbsp; <span class="c-str">"REST API"</span>,</div>
-        <div>&nbsp;&nbsp; <span class="c-str">"MySQL"</span></div>
-        <div>&nbsp; ],</div>
-        <div>&nbsp; loves: <span class="c-str">"clean code"</span></div>
-        <div>};</div>
       </div>
-      <div class="badge-float b2">📍 Ahmedabad, India</div>
+      <div class="badge-float">📍 Ahmedabad, India</div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
+<!-- ABOUT -->
+<section id="about">
   <div class="section-inner">
-    <p class="section-label">// 02 · Technical Arsenal</p>
-    <h2 class="section-title">Skills & Technologies</h2>
-    <div class="skills-grid fade-in">
-      <div class="skill-card">
-        <div class="skill-icon">☕</div>
-        <div class="skill-title">Languages</div>
-        <div class="tag-list">
-          <span class="tag">Java</span>
-          <span class="tag">JavaScript (ES6+)</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">SQL</span>
+    <p class="section-label">// 01 · About</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>Full-Stack Developer with 4+ years of professional experience building scalable enterprise applications across SaaS, agriculture, catering, and healthcare domains.</p>
+        <p>I works across the complete software development lifecycle — from requirement analysis and architecture design through development, testing, deployment, and production support — owning application modules end-to-end and working directly with clients to turn business requirements into reliable technical solutions.</p>
+        <div class="about-highlights">
+          <div class="about-highlight">Owns modules end-to-end</div>
+          <div class="about-highlight">Direct client collaboration</div>
+          <div class="about-highlight">Agile / Scrum delivery</div>
+          <div class="about-highlight">Production issue resolution</div>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon">⚙️</div>
-        <div class="skill-title">Backend</div>
-        <div class="tag-list">
-          <span class="tag">Spring Boot</span>
-          <span class="tag">Spring MVC</span>
-          <span class="tag">Hibernate</span>
-          <span class="tag">JPA</span>
-          <span class="tag">REST API</span>
-          <span class="tag">WebSocket</span>
-          <span class="tag">STOMP</span>
-          <span class="tag">Microservices</span>
-          <span class="tag">Servlet</span>
-          <span class="tag">JSP</span>
-        </div>
+      <div class="sdlc-flow" aria-label="Software development lifecycle">
+        <span class="sdlc-step">Requirement Analysis</span><span class="sdlc-arrow">→</span>
+        <span class="sdlc-step">Design</span><span class="sdlc-arrow">→</span>
+        <span class="sdlc-step">Development</span><span class="sdlc-arrow">→</span>
+        <span class="sdlc-step">Testing</span><span class="sdlc-arrow">→</span>
+        <span class="sdlc-step">Deployment</span><span class="sdlc-arrow">→</span>
+        <span class="sdlc-step">Production Support</span>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon">🎨</div>
-        <div class="skill-title">Frontend</div>
-        <div class="tag-list">
-          <span class="tag g">Angular 15</span>
-          <span class="tag g">Tailwind CSS</span>
-          <span class="tag g">Bootstrap 5</span>
-          <span class="tag g">jQuery</span>
-          <span class="tag g">ZK Framework (ZK-EE)</span>
-        </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <p class="section-label">// 02 · Process</p>
+    <h2 class="section-title">How I Build Software</h2>
+    <div class="process-grid fade-in">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Understand</h3>
+        <p>Understand business requirements and real user problems.</p>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon">🗄️</div>
-        <div class="skill-title">Databases</div>
-        <div class="tag-list">
-          <span class="tag y">MySQL</span>
-          <span class="tag y">PostgreSQL</span>
-          <span class="tag y">MongoDB</span>
-          <span class="tag y">Liquibase</span>
-        </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>Design</h3>
+        <p>Design maintainable architecture, APIs, and data flows.</p>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon">☁️</div>
-        <div class="skill-title">Cloud & DevOps</div>
-        <div class="tag-list">
-          <span class="tag p">Bitbucket Pipelines</span>
-          <span class="tag p">CI/CD</span>
-        </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Build</h3>
+        <p>Develop scalable backend and frontend modules.</p>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon">🛠</div>
-        <div class="skill-title">Tools</div>
-        <div class="tag-list">
-          <span class="tag p">Git</span>
-          <span class="tag p">Postman</span>
-          <span class="tag p">Jasper Reports</span>
-          <span class="tag p">Swagger</span>
-          <span class="tag p">DBeaver</span>
-          <span class="tag p">SQLYog</span>
-          <span class="tag p">SmartGit</span>
-          <span class="tag p">Bitbucket</span>
-        </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Validate</h3>
+        <p>Test functionality, APIs, integrations, and edge cases.</p>
       </div>
-      <div class="skill-card">
-        <div class="skill-icon">💻</div>
-        <div class="skill-title">IDEs</div>
-        <div class="tag-list">
-          <span class="tag">Eclipse</span>
-          <span class="tag">Spring Tool Suite (STS)</span>
-          <span class="tag">Visual Studio Code</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">📋</div>
-        <div class="skill-title">Methodologies</div>
-        <div class="tag-list">
-          <span class="tag y">Agile/Scrum</span>
-          <span class="tag y">SDLC</span>
-          <span class="tag y">OOP</span>
-          <span class="tag y">MVC Architecture</span>
-        </div>
+      <div class="process-step">
+        <div class="process-num">05</div>
+        <h3>Deploy &amp; Improve</h3>
+        <p>Deploy applications, resolve production issues, and continuously improve the system.</p>
       </div>
     </div>
   </div>
@@ -748,14 +963,17 @@
         <div class="tl-title">Full Stack Engineer</div>
         <div class="tl-company">QDev Technolab Pvt. Ltd. · Ahmedabad, India</div>
         <ul class="tl-bullets">
-          <li>Spearheaded full ownership of enterprise web application modules using Java, Spring Boot, Angular 15, ZK-EE, Hibernate, JPA, MySQL & MongoDB, ensuring high availability and performance.</li>
-          <li>Engineered the Jucas Menu Calculation Module from scratch — automating raw material computation, ingredient-level pricing & party-order cost breakdowns, eliminating error-prone manual workflows.</li>
-          <li>Designed and implemented the Crockery Management Module with dynamic person-range-based default allocation logic, streamlining order creation and reducing data-entry errors.</li>
-          <li>Integrated Jasper Reports to automate generation of operational reports for client-facing dashboards, replacing manual report creation and improving turnaround time.</li>
-          <li>Collaborated directly with clients to translate business requirements into technical specifications; delivered iterative releases following Agile/Scrum methodology.</li>
-          <li>Enforced coding standards through peer code reviews, applied security patches, and maintained technical documentation across all delivered modules.</li>
-          <li>Resolved live production incidents and provided continuous post-deployment support, consistently achieving high client satisfaction.</li>
+          <li>Owned enterprise application modules end-to-end using Java, Spring Boot, Angular 15, Hibernate, JPA, MySQL &amp; MongoDB, ensuring high availability and performance.</li>
+          <li>Engineered the Jucas Menu Calculation Module from scratch — automating raw material computation, ingredient-level pricing &amp; party-order cost breakdowns.</li>
+          <li>Designed and built the Crockery Management module with dynamic person-range-based default allocation logic, streamlining order creation.</li>
+          <li>Integrated Jasper Reports to automate operational reports for client-facing dashboards, replacing manual report creation.</li>
+          <li>Collaborated directly with clients to translate business requirements into technical specifications; delivered iterative releases following Agile/Scrum.</li>
+          <li>Resolved live production incidents and provided continuous post-deployment support.</li>
         </ul>
+        <ul class="tl-bullets" id="tl-more-1" hidden>
+          <li>Enforced coding standards through peer code reviews, applied security patches, and maintained technical documentation across all delivered modules.</li>
+        </ul>
+        <button class="tl-more-toggle" aria-expanded="false" aria-controls="tl-more-1">View more</button>
       </div>
 
       <div class="tl-item">
@@ -763,10 +981,10 @@
         <div class="tl-title">Junior Java Developer</div>
         <div class="tl-company">QDev Technolab Pvt. Ltd. · Ahmedabad, India</div>
         <ul class="tl-bullets">
-          <li>Engineered Admin and Super Admin interfaces for Farmony — a multi-country farm-operations platform handling import/export workflows, online sales, equipment management, payroll & configurable policy settings using Spring MVC, ZK-EE & MySQL.</li>
-          <li>Built the Wings Meetings Management Tool end-to-end: agenda tracking, attendance records, automated email notifications to participants & time-spent analytics (monthly/yearly/custom date range).</li>
-          <li>Developed core modules of the Blood Management System — donor registration, real-time blood-inventory management & donor-recipient coordination.</li>
-          <li>Identified and resolved software defects; collaborated with senior developers on code reviews, unit testing & production deployments.</li>
+          <li>Built Admin and Super Admin interfaces for Farmony — a multi-country farm-operations platform handling import/export, online sales, equipment management, payroll &amp; configurable policies using Spring MVC, ZK-EE &amp; MySQL.</li>
+          <li>Built the Wings Meetings Management Tool end-to-end: agenda tracking, attendance records, automated email notifications &amp; time-spent analytics.</li>
+          <li>Developed core modules of the Blood Management System — donor registration, real-time blood-inventory management &amp; donor-recipient coordination.</li>
+          <li>Identified and resolved software defects; collaborated with senior developers on code reviews, unit testing &amp; production deployments.</li>
         </ul>
       </div>
 
@@ -776,19 +994,10 @@
         <div class="tl-company">QDev Technolab Pvt. Ltd. · Ahmedabad, India</div>
         <ul class="tl-bullets">
           <li>Gained hands-on experience with enterprise Java development using Spring MVC, ZK-EE, and MySQL under senior developer mentorship.</li>
-          <li>Assisted in building and testing web modules; contributed to code documentation and deployment processes.</li>
+          <li>Assisted in building and testing web modules; contributed to code documentation and deployment support.</li>
         </ul>
       </div>
 
-    </div>
-
-    <!-- Award -->
-    <div class="award-banner fade-in" style="margin-top: 3rem;">
-      <div class="award-icon">🏆</div>
-      <div class="award-text">
-        <h3>Employee of the Month — Nominated Twice</h3>
-        <p>Recognised at QDev Technolab for exceptional problem-solving, strong code quality, and a client-first approach to software delivery.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -797,86 +1006,146 @@
 <section id="projects">
   <div class="section-inner">
     <p class="section-label">// 04 · Selected Work</p>
-    <h2 class="section-title">Key Projects</h2>
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="projects-feature fade-in">
+      <div class="project-card project-card-feature">
+        <div>
+          <div class="project-card-top">
+            <span class="project-num">01</span>
+            <span class="project-category">Full-Stack Property Rental Management SaaS</span>
+          </div>
+          <div class="project-title">Dira2Stay / PropertyPro</div>
+          <p class="project-desc" style="margin-top:.8rem;"><strong>Problem —</strong> Vacation rental operators needed a unified platform for property listings, bookings, guest messaging, and OTA distribution.</p>
+          <p class="project-desc" style="margin-top:.6rem;"><strong>Solution —</strong> Built a full-stack SaaS platform covering property listings, booking workflows, real-time messaging, and OTA distribution.</p>
+          <div class="project-actions">
+            <a href="https://propertypro.soft2develop.com" target="_blank" rel="noopener" class="project-link">↗ propertypro.soft2develop.com</a>
+            <button type="button" class="btn btn-outline btn-sm" data-case-study="propertypro">View Case Study</button>
+          </div>
+        </div>
+        <div>
+          <ul class="project-highlights">
+            <li>Bidirectional real-time chat via WebSocket &amp; STOMP</li>
+            <li>Channex Channel Manager integration for OTA distribution</li>
+            <li>Asynchronous Spring Boot synchronization services with scheduled retry jobs</li>
+            <li>Liquibase-managed schema migrations</li>
+            <li>Bitbucket Pipelines CI/CD across dev, staging &amp; production</li>
+          </ul>
+          <div class="project-stack" style="margin-top:1.2rem;">
+            <span class="tag">Java 14</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">REST API</span>
+            <span class="tag y">MySQL</span>
+            <span class="tag">WebSocket</span>
+            <span class="tag">STOMP</span>
+            <span class="tag y">Liquibase</span>
+            <span class="tag p">Swagger</span>
+            <span class="tag p">CI/CD</span>
+            <span class="tag p">Bitbucket Pipelines</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="projects-grid fade-in">
 
       <div class="project-card">
-        <div class="project-num">01</div>
-        <div>
-          <div class="project-title">Dira2Stay / PropertyPro — Property Rental SaaS</div>
-          <a href="https://propertypro.soft2develop.com" target="_blank" class="project-link">↗ propertypro.soft2develop.com</a>
+        <div class="project-card-top">
+          <span class="project-num">02</span>
+          <span class="project-category">Enterprise Catering Management</span>
         </div>
-        <p class="project-desc">Full-stack property rental management SaaS covering listings, booking workflows & real-time guest messaging. Engineered bidirectional WebSocket/STOMP chat, integrated third-party Channel Manager (Channex) for OTA distribution with async sync services & scheduled retry jobs, and implemented zero-downtime CI/CD via Bitbucket Pipelines.</p>
-        <div class="project-stack">
-          <span class="tag">Java 14</span>
-          <span class="tag">Spring Boot</span>
-          <span class="tag">REST API</span>
-          <span class="tag y">MySQL</span>
-          <span class="tag">WebSocket</span>
-          <span class="tag">STOMP</span>
-          <span class="tag y">Liquibase</span>
-          <span class="tag p">Swagger</span>
-          <span class="tag p">CI/CD</span>
-          <span class="tag p">Bitbucket Pipelines</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">02</div>
-        <div>
-          <div class="project-title">Jucas Catering Software</div>
-          <a href="https://myjucas.com" target="_blank" class="project-link">↗ myjucas.com</a>
-        </div>
-        <p class="project-desc">Full-stack catering automation platform eliminating manual raw material, pricing & crockery calculations. Built Menu Calculation & Crockery Management modules from scratch; integrated Jasper Reports for automated client-facing operational reporting.</p>
+        <div class="project-title">Jucas Catering Software</div>
+        <p class="project-desc"><strong>Problem —</strong> Enterprise catering businesses relied on manual calculations for raw materials, pricing, and crockery allocation.</p>
+        <ul class="project-highlights">
+          <li>Menu Calculation Module with automated pricing &amp; cost breakdowns</li>
+          <li>Crockery Management with dynamic person-range allocation</li>
+          <li>Jasper Reports for automated operational reporting</li>
+        </ul>
         <div class="project-stack">
           <span class="tag">Spring Boot</span>
-          <span class="tag">Angular 15</span>
+          <span class="tag">Spring MVC</span>
+          <span class="tag">Hibernate</span>
+          <span class="tag">JPA</span>
           <span class="tag g">MySQL</span>
           <span class="tag y">Jasper Reports</span>
+          <span class="tag">Angular 15</span>
           <span class="tag">REST API</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://myjucas.com" target="_blank" rel="noopener" class="project-link">↗ myjucas.com</a>
+          <button type="button" class="btn btn-outline btn-sm" data-case-study="jucas">View Case Study</button>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-num">03</div>
-        <div>
-          <div class="project-title">Farmony — Admin & Super Admin</div>
-          <a href="https://dev2.farmony.org" target="_blank" class="project-link">↗ dev2.farmony.org</a>
+        <div class="project-card-top">
+          <span class="project-num">03</span>
+          <span class="project-category">Multi-Country Farm Operations Platform</span>
         </div>
-        <p class="project-desc">Multi-country enterprise farm-operations system managing import/export, online sales, machinery, payroll & configurable policy settings. Delivered dynamic Super Admin policy configuration enabling non-technical administrators to manage system-wide settings.</p>
+        <div class="project-title">Farmony — Admin &amp; Super Admin</div>
+        <p class="project-desc"><strong>Problem —</strong> Farm-operations businesses needed centralized tools to manage import/export, online sales, equipment, payroll &amp; policies across countries.</p>
+        <ul class="project-highlights">
+          <li>Import/export workflows &amp; online sales</li>
+          <li>Equipment management &amp; payroll</li>
+          <li>Dynamic, configurable Super Admin policies</li>
+        </ul>
         <div class="project-stack">
           <span class="tag">Java</span>
           <span class="tag">Spring MVC</span>
           <span class="tag p">ZK-EE</span>
           <span class="tag g">MySQL</span>
         </div>
+        <div class="project-actions">
+          <a href="https://dev2.farmony.org" target="_blank" rel="noopener" class="project-link">↗ dev2.farmony.org</a>
+          <button type="button" class="btn btn-outline btn-sm" data-case-study="farmony">View Case Study</button>
+        </div>
       </div>
 
       <div class="project-card">
-        <div class="project-num">04</div>
-        <div>
-          <div class="project-title">Wings — Meetings Management Tool</div>
+        <div class="project-card-top">
+          <span class="project-num">04</span>
+          <span class="project-category">Meetings Management Tool</span>
         </div>
-        <p class="project-desc">Enterprise tool for meeting scheduling, agenda management, attendance tracking & document storage. Automated email dispatch of agendas to participants; built time-spent dashboards with monthly, yearly & custom date-range analytics.</p>
+        <div class="project-title">Wings</div>
+        <p class="project-desc"><strong>Problem —</strong> Teams needed a structured way to schedule meetings and track agendas, attendance &amp; time spent.</p>
+        <ul class="project-highlights">
+          <li>Scheduling, agendas &amp; attendance tracking</li>
+          <li>Document storage &amp; automated email notifications</li>
+          <li>Monthly / yearly / custom date-range analytics</li>
+        </ul>
         <div class="project-stack">
           <span class="tag">Spring Boot</span>
           <span class="tag">Angular 15</span>
           <span class="tag g">MySQL</span>
           <span class="tag">REST API</span>
         </div>
+        <div class="project-actions">
+          <span class="no-live-note">Internal enterprise tool</span>
+          <button type="button" class="btn btn-outline btn-sm" data-case-study="wings">View Case Study</button>
+        </div>
       </div>
 
       <div class="project-card">
-        <div class="project-num">05</div>
-        <div>
-          <div class="project-title">Blood Management System</div>
+        <div class="project-card-top">
+          <span class="project-num">05</span>
+          <span class="project-category">Healthcare — Blood Inventory</span>
         </div>
-        <p class="project-desc">Healthcare application solving the lack of real-time blood inventory tracking at donation centres. Developed donor registration, real-time inventory management & donor-recipient coordination workflows.</p>
+        <div class="project-title">Blood Management System</div>
+        <p class="project-desc"><strong>Problem —</strong> Donation centres lacked real-time visibility into blood inventory and donor-recipient coordination.</p>
+        <ul class="project-highlights">
+          <li>Donor registration</li>
+          <li>Real-time blood inventory</li>
+          <li>Donor-recipient coordination</li>
+        </ul>
         <div class="project-stack">
           <span class="tag">Java</span>
           <span class="tag">Spring MVC</span>
           <span class="tag p">Hibernate</span>
           <span class="tag g">MySQL</span>
+        </div>
+        <div class="project-actions">
+          <span class="no-live-note">Internal enterprise tool</span>
+          <button type="button" class="btn btn-outline btn-sm" data-case-study="blood">View Case Study</button>
         </div>
       </div>
 
@@ -884,10 +1153,126 @@
   </div>
 </section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">// 05 · Technical Arsenal</p>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">☕</div>
+        <div class="skill-title">Languages</div>
+        <div class="tag-list">
+          <span class="tag">Java</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">⚙️</div>
+        <div class="skill-title">Backend</div>
+        <div class="tag-list">
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Spring MVC</span>
+          <span class="tag">Hibernate</span>
+          <span class="tag">JPA</span>
+          <span class="tag">REST API</span>
+          <span class="tag">WebSocket</span>
+          <span class="tag">STOMP</span>
+          <span class="tag">Servlet</span>
+          <span class="tag">JSP</span>
+          <span class="tag">Microservices</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">🎨</div>
+        <div class="skill-title">Frontend</div>
+        <div class="tag-list">
+          <span class="tag g">Angular 15</span>
+          <span class="tag g">Tailwind CSS</span>
+          <span class="tag g">Bootstrap 5</span>
+          <span class="tag g">jQuery</span>
+          <span class="tag g">ZK Framework</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">🗄️</div>
+        <div class="skill-title">Databases</div>
+        <div class="tag-list">
+          <span class="tag y">MySQL</span>
+          <span class="tag y">PostgreSQL</span>
+          <span class="tag y">MongoDB</span>
+          <span class="tag y">Liquibase</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">☁️</div>
+        <div class="skill-title">DevOps</div>
+        <div class="tag-list">
+          <span class="tag p">Bitbucket Pipelines</span>
+          <span class="tag p">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">🛠</div>
+        <div class="skill-title">Tools</div>
+        <div class="tag-list">
+          <span class="tag p">Git</span>
+          <span class="tag p">Postman</span>
+          <span class="tag p">Swagger</span>
+          <span class="tag p">Jasper Reports</span>
+          <span class="tag p">DBeaver</span>
+          <span class="tag p">SQLYog</span>
+          <span class="tag p">SmartGit</span>
+          <span class="tag p">Bitbucket</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">💻</div>
+        <div class="skill-title">IDEs</div>
+        <div class="tag-list">
+          <span class="tag">Eclipse</span>
+          <span class="tag">Spring Tool Suite</span>
+          <span class="tag">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon" aria-hidden="true">📋</div>
+        <div class="skill-title">Methodologies</div>
+        <div class="tag-list">
+          <span class="tag y">Agile/Scrum</span>
+          <span class="tag y">SDLC</span>
+          <span class="tag y">OOP</span>
+          <span class="tag y">MVC Architecture</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition">
+  <div class="section-inner">
+    <p class="section-label">// 06 · Recognition</p>
+    <h2 class="section-title">Recognition</h2>
+    <div class="award-banner fade-in">
+      <div class="award-icon" aria-hidden="true">🏆</div>
+      <div class="award-text">
+        <h3>Employee of the Month Nominee — 2×</h3>
+        <p>QDev Technolab Pvt. Ltd.</p>
+        <p>Recognised for exceptional problem-solving, strong code quality, and a client-first approach to software delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EDUCATION -->
 <section id="education">
   <div class="section-inner">
-    <p class="section-label">// 05 · Academic Background</p>
+    <p class="section-label">// 07 · Academic Background</p>
     <h2 class="section-title">Academic Background</h2>
     <div class="edu-grid fade-in">
       <div class="edu-card">
@@ -907,21 +1292,21 @@
 <!-- LANGUAGES -->
 <section id="languages">
   <div class="section-inner">
-    <p class="section-label">// 06 · Languages</p>
+    <p class="section-label">// 08 · Languages</p>
     <h2 class="section-title">Languages</h2>
     <div class="skills-grid fade-in" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
       <div class="skill-card">
-        <div class="skill-icon">🇬🇧</div>
+        <div class="skill-icon" aria-hidden="true">🇬🇧</div>
         <div class="skill-title">English</div>
         <div class="tag-list"><span class="tag">Professional Working</span></div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">🇮🇳</div>
+        <div class="skill-icon" aria-hidden="true">🇮🇳</div>
         <div class="skill-title">Hindi</div>
         <div class="tag-list"><span class="tag g">Native / Bilingual</span></div>
       </div>
       <div class="skill-card">
-        <div class="skill-icon">🇮🇳</div>
+        <div class="skill-icon" aria-hidden="true">🇮🇳</div>
         <div class="skill-title">Gujarati</div>
         <div class="tag-list"><span class="tag g">Native / Bilingual</span></div>
       </div>
@@ -934,25 +1319,29 @@
   <div class="section-inner">
     <div class="contact-grid fade-in">
       <div class="contact-intro">
-        <p class="section-label">// 07 · Let's Connect</p>
-        <h2>Open to new<br/><em style="font-family:'DM Serif Display',serif; color:var(--accent);">opportunities.</em></h2>
-        <p>Whether you have a role in mind or just want to say hi, my inbox is always open. I'll get back to you promptly.</p>
+        <p class="section-label">// 09 · Let's Connect</p>
+        <h2>Let's build something<br/><em style="font-style:italic;color:var(--accent);">useful.</em></h2>
+        <p>Looking for a Full-Stack Developer to build scalable, reliable, and maintainable software? Let's talk.</p>
+        <div class="contact-cta-group">
+          <a href="mailto:dyogi4444@gmail.com" class="btn btn-primary">✉ Email Me</a>
+          <a href="https://linkedin.com/in/dinesh-yogi" target="_blank" rel="noopener" class="btn btn-outline">↗ Connect on LinkedIn</a>
+        </div>
       </div>
       <div class="contact-links">
         <a href="mailto:dyogi4444@gmail.com" class="contact-link">
-          <div class="contact-link-icon">✉</div>
+          <div class="contact-link-icon" aria-hidden="true">✉</div>
           <span>dyogi4444@gmail.com</span>
         </a>
         <a href="tel:+917433055774" class="contact-link">
-          <div class="contact-link-icon">📞</div>
+          <div class="contact-link-icon" aria-hidden="true">📞</div>
           <span>+91 74330 55774</span>
         </a>
-        <a href="https://linkedin.com/in/dinesh-yogi" target="_blank" class="contact-link">
-          <div class="contact-link-icon">🔗</div>
+        <a href="https://linkedin.com/in/dinesh-yogi" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon" aria-hidden="true">🔗</div>
           <span>linkedin.com/in/dinesh-yogi</span>
         </a>
         <div class="contact-link" style="cursor:default;">
-          <div class="contact-link-icon">📍</div>
+          <div class="contact-link-icon" aria-hidden="true">📍</div>
           <span>Ahmedabad, Gujarat, India</span>
         </div>
       </div>
@@ -961,20 +1350,301 @@
 </section>
 
 <footer>
-  <p>Crafted with ♥ · Dineshnath P. Yogi © 2026 · Full-Stack Developer</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">DNY</div>
+      <p>Dineshnath P. Yogi</p>
+      <p class="footer-tagline">Full-Stack Developer building scalable software and solving real-world business problems.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/dinesh-yogi" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:dyogi4444@gmail.com">Email</a>
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Dineshnath P. Yogi. All rights reserved.</p>
 </footer>
 
+<!-- CASE STUDY MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="caseStudyModal">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close case study">✕</button>
+    <p class="modal-category" id="modalCategory"></p>
+    <h2 class="modal-title" id="modalTitle"></h2>
+    <a class="modal-live-link" id="modalLiveLink" target="_blank" rel="noopener" hidden>View Live Project ↗</a>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
 <script>
-  // Intersection Observer for fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
+(function () {
+  var root = document.documentElement;
+
+  /* Theme toggle */
+  var themeToggle = document.getElementById('themeToggle');
+  try {
+    if (localStorage.getItem('theme') === 'light') root.setAttribute('data-theme', 'light');
+  } catch (e) {}
+
+  function updateThemeLabel() {
+    var isLight = root.getAttribute('data-theme') === 'light';
+    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+  updateThemeLabel();
+
+  themeToggle.addEventListener('click', function () {
+    var isLight = root.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      root.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      root.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+    updateThemeLabel();
+  });
+
+  /* Sticky nav scroll state */
+  var nav = document.getElementById('siteNav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Mobile nav menu */
+  var navToggle = document.getElementById('navToggle');
+  var navMenu = document.getElementById('navMenu');
+
+  function closeMenu() {
+    navMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open menu');
+  }
+  function openMenu() {
+    navMenu.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Close menu');
+  }
+  navToggle.addEventListener('click', function () {
+    if (navMenu.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  navMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  /* Scroll-reveal */
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(function (el) { observer.observe(el); });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  /* Experience "view more" */
+  document.querySelectorAll('.tl-more-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.getAttribute('aria-controls'));
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      target.hidden = expanded;
+      btn.textContent = expanded ? 'View more' : 'View less';
+    });
+  });
+
+  /* Project case studies */
+  var archDiagramHTML =
+    '<div class="arch-card" aria-hidden="true">' +
+      '<div class="arch-diagram">' +
+        '<div class="arch-node">Angular</div><div class="arch-connector"></div>' +
+        '<div class="arch-node">REST API</div><div class="arch-connector"></div>' +
+        '<div class="arch-node">Spring Boot</div><div class="arch-connector"></div>' +
+        '<div class="arch-node">Service Layer</div><div class="arch-connector"></div>' +
+        '<div class="arch-node">JPA / Hibernate</div><div class="arch-connector"></div>' +
+        '<div class="arch-node">MySQL</div>' +
+      '</div>' +
+      '<div class="arch-badges">' +
+        '<span class="arch-badge">WebSocket / STOMP</span>' +
+        '<span class="arch-badge">Channex</span>' +
+        '<span class="arch-badge">Liquibase</span>' +
+        '<span class="arch-badge">Bitbucket Pipelines</span>' +
+      '</div>' +
+    '</div>';
+
+  var projects = {
+    propertypro: {
+      title: 'Dira2Stay / PropertyPro',
+      category: 'Full-Stack Property Rental Management SaaS',
+      live: 'https://propertypro.soft2develop.com',
+      overview: 'Dira2Stay (PropertyPro) is a full-stack SaaS platform built for vacation rental operators to manage property listings, bookings, guest communication, and distribution across OTAs from a single system.',
+      problem: 'Vacation rental operators needed a unified platform for property listings, bookings, guest messaging, and OTA distribution.',
+      solution: 'Built a full-stack SaaS platform covering property listings, booking workflows, real-time messaging, and OTA distribution.',
+      architecture: archDiagramHTML,
+      features: [
+        'Bidirectional real-time chat using WebSocket and STOMP',
+        'Channex Channel Manager integration for OTA distribution',
+        'Asynchronous Spring Boot synchronization services',
+        'Scheduled retry jobs for resilient third-party sync',
+        'Channel synchronization status dashboard',
+        'Liquibase-managed database migrations',
+        'Swagger-documented REST APIs',
+        'Bitbucket Pipelines CI/CD across development, staging and production'
+      ],
+      stack: ['Java 14', 'Spring Boot', 'REST API', 'MySQL', 'WebSocket', 'STOMP', 'Liquibase', 'Swagger', 'CI/CD', 'Bitbucket Pipelines'],
+      challenges: 'Keeping listing and booking data in sync with third-party OTA channels in near real time — while gracefully handling intermittent third-party API failures — required building asynchronous synchronization services with scheduled retry logic and clear sync-status visibility for support teams.',
+      contribution: 'Worked on the WebSocket/STOMP messaging layer, the Channex integration and synchronization services, Liquibase-managed schema changes, and the Bitbucket Pipelines CI/CD setup across development, staging and production environments.'
+    },
+    jucas: {
+      title: 'Jucas Catering Software',
+      category: 'Enterprise Catering Management',
+      live: 'https://myjucas.com',
+      overview: 'Jucas is an enterprise catering management platform used to plan menus, calculate costs, and manage crockery for large catering orders.',
+      problem: 'Enterprise catering businesses relied on manual calculations for raw materials, pricing, and crockery allocation.',
+      solution: 'Built the Menu Calculation and Crockery Management modules to automate raw-material requirements, ingredient-level pricing, and person-range-based crockery allocation.',
+      architecture: '<p>Angular 15 front end → REST API → Spring Boot (Spring MVC) → Hibernate / JPA → MySQL, with Jasper Reports generating operational reports from the service layer.</p>',
+      features: [
+        'Menu Calculation Module built from scratch',
+        'Automated raw material requirement computation',
+        'Ingredient-level pricing',
+        'Party-order cost breakdown',
+        'Crockery Management with dynamic person-range allocation',
+        'Jasper Reports integration for automated operational reporting'
+      ],
+      stack: ['Spring Boot', 'Spring MVC', 'Hibernate', 'JPA', 'MySQL', 'Jasper Reports', 'Angular 15', 'REST API'],
+      challenges: 'Menu costing depends on many interacting variables — ingredient quantities, pricing tiers and guest counts — so the calculation engine had to stay accurate and fast as order size and menu complexity grew, while crockery allocation needed sensible defaults across a wide range of guest counts.',
+      contribution: 'Designed and built the Menu Calculation Module and Crockery Management module from scratch, and integrated Jasper Reports for client-facing operational reports.'
+    },
+    farmony: {
+      title: 'Farmony — Admin & Super Admin',
+      category: 'Multi-Country Farm Operations Platform',
+      live: 'https://dev2.farmony.org',
+      overview: 'Farmony is a multi-country farm-operations platform with Admin and Super Admin interfaces for managing trade, sales, equipment, payroll and policy across regions.',
+      problem: 'Farm-operations businesses needed centralized Admin and Super Admin tools to manage import/export workflows, online sales, equipment, payroll, and policies across multiple countries.',
+      solution: 'Built Admin and Super Admin interfaces with dynamic, non-technical-friendly policy configuration.',
+      architecture: '<p>Server-rendered Admin &amp; Super Admin UI (Spring MVC, ZK-EE) → Service layer → MySQL.</p>',
+      features: [
+        'Import/export workflows',
+        'Online sales',
+        'Equipment management',
+        'Payroll',
+        'Configurable, non-technical-friendly policies',
+        'Dedicated Admin / Super Admin interfaces'
+      ],
+      stack: ['Java', 'Spring MVC', 'ZK-EE', 'MySQL'],
+      challenges: 'Supporting multiple countries meant the platform needed configurable, non-technical-friendly policy settings rather than hard-coded business rules, so Super Admins could adjust operational policies without code changes.',
+      contribution: 'Built Admin and Super Admin interfaces including import/export, online sales, equipment management, payroll and dynamic policy configuration screens.'
+    },
+    wings: {
+      title: 'Wings — Meetings Management Tool',
+      category: 'Enterprise Meetings Management',
+      live: null,
+      overview: 'Wings is an enterprise tool for scheduling meetings and managing agendas, attendance, documents and time-spent analytics.',
+      problem: 'Teams needed a structured way to schedule meetings, track agendas and attendance, and analyze time spent in meetings.',
+      solution: 'Built an end-to-end meetings management tool covering scheduling, agendas, attendance, document storage and analytics.',
+      architecture: '<p>Angular 15 front end → REST API → Spring Boot → MySQL.</p>',
+      features: [
+        'Meeting scheduling',
+        'Agenda management',
+        'Attendance tracking',
+        'Document storage',
+        'Automated email notifications',
+        'Time-spent analytics — monthly, yearly &amp; custom date range'
+      ],
+      stack: ['Spring Boot', 'Angular 15', 'MySQL', 'REST API'],
+      challenges: 'Time-spent analytics needed to support monthly, yearly and custom date-range views, which meant designing flexible, reusable query and aggregation logic rather than one-off reports.',
+      contribution: 'Built the tool end-to-end — scheduling, agenda management, attendance tracking, document storage, email notifications and analytics dashboards.'
+    },
+    blood: {
+      title: 'Blood Management System',
+      category: 'Healthcare — Blood Inventory Management',
+      live: null,
+      overview: 'A healthcare application for managing donor registration and real-time blood inventory at donation centres.',
+      problem: 'Donation centres lacked real-time visibility into blood inventory and donor-recipient coordination.',
+      solution: 'Built donor registration, real-time inventory tracking and donor-recipient coordination workflows.',
+      architecture: '<p>Spring MVC front end (JSP) → Service layer (Hibernate) → MySQL.</p>',
+      features: [
+        'Donor registration',
+        'Real-time blood inventory tracking',
+        'Donor-recipient coordination'
+      ],
+      stack: ['Java', 'Spring MVC', 'MySQL', 'Hibernate'],
+      challenges: 'Blood inventory needed to stay accurate in real time across registrations and allocations to support fast, reliable donor-recipient coordination.',
+      contribution: 'Developed core modules for donor registration, inventory management and donor-recipient coordination.'
+    }
+  };
+
+  var backdrop = document.getElementById('modalBackdrop');
+  var modal = document.getElementById('caseStudyModal');
+  var modalBody = document.getElementById('modalBody');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalCategory = document.getElementById('modalCategory');
+  var modalLiveLink = document.getElementById('modalLiveLink');
+  var modalClose = document.getElementById('modalClose');
+  var lastFocused = null;
+
+  function renderList(items) {
+    return '<ul class="modal-list">' + items.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
+  }
+  function renderTags(items) {
+    return '<div class="modal-tags">' + items.map(function (i) { return '<span class="tag">' + i + '</span>'; }).join('') + '</div>';
+  }
+
+  function openCaseStudy(id) {
+    var p = projects[id];
+    if (!p) return;
+
+    modalCategory.textContent = p.category;
+    modalTitle.textContent = p.title;
+    if (p.live) {
+      modalLiveLink.href = p.live;
+      modalLiveLink.hidden = false;
+    } else {
+      modalLiveLink.hidden = true;
+    }
+
+    modalBody.innerHTML =
+      '<div class="modal-section"><span class="modal-step">01</span><h3>Overview</h3><p>' + p.overview + '</p></div>' +
+      '<div class="modal-section"><span class="modal-step">02</span><h3>Business Problem</h3><p>' + p.problem + '</p></div>' +
+      '<div class="modal-section"><span class="modal-step">03</span><h3>Solution</h3><p>' + p.solution + '</p></div>' +
+      '<div class="modal-section"><span class="modal-step">04</span><h3>Architecture</h3>' + p.architecture + '</div>' +
+      '<div class="modal-section"><span class="modal-step">05</span><h3>Key Features</h3>' + renderList(p.features) + '</div>' +
+      '<div class="modal-section"><span class="modal-step">06</span><h3>Technology Stack</h3>' + renderTags(p.stack) + '</div>' +
+      '<div class="modal-section"><span class="modal-step">07</span><h3>Engineering Challenges</h3><p>' + p.challenges + '</p></div>' +
+      '<div class="modal-section"><span class="modal-step">08</span><h3>My Contribution</h3><p>' + p.contribution + '</p></div>';
+
+    lastFocused = document.activeElement;
+    backdrop.hidden = false;
+    document.body.classList.add('modal-open');
+    modalClose.focus();
+    document.addEventListener('keydown', onModalKeydown);
+  }
+
+  function closeCaseStudy() {
+    backdrop.hidden = true;
+    document.body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onModalKeydown);
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  }
+
+  function onModalKeydown(e) {
+    if (e.key === 'Escape') { closeCaseStudy(); return; }
+    if (e.key === 'Tab') {
+      var focusable = modal.querySelectorAll('button, a[href]');
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+
+  document.querySelectorAll('[data-case-study]').forEach(function (btn) {
+    btn.addEventListener('click', function () { openCaseStudy(btn.getAttribute('data-case-study')); });
+  });
+  modalClose.addEventListener('click', closeCaseStudy);
+  backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeCaseStudy(); });
+})();
 </script>
 </body>
 </html>
